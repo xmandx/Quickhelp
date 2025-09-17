@@ -1,6 +1,62 @@
+/* importação de fonte */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lilita+One&family=Modak&family=Quicksand&display=swap');
+
+/* configurações gerais */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    font-weight: 600;
+    cursor: pointer;
+    height: 40px;
+    padding: 0px 30px;
+    color: var(--white);
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 40px;
+}
+
+/* criação de variáveis */
+:root{
+    --light-gray: #FAFAFA;
+    --white: #FFFFFF;
+    --black: #000000;
+    --text-color: #555555;
+    --text-hover: #858585;
+    --light-text-color: #ffffffc5;
+    --main-color: #D90000;
+    --dark-red: #AD0000;
+    --light-red: #e05a5a;
+}
+
+/* definindo propriedade de classes */
+
+.title{
+    font-size: 30px;
+    color: var(--black);
+}
+
+b{
+    font-size: 30px;
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* animações padrão */
+button:hover{
+    background-color: transparent;
+    color: var(--main-color);
 }

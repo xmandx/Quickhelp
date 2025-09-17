@@ -1,0 +1,52 @@
+/* estilo do header */
+header{
+    height: 100px;
+    width: 100vw;
+    background-color: var(--light-gray);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+        position: fixed;
+}
+
+/* definindo as propriedades da logo */
+.logo img{
+    width: 150px;
+}
+
+/* propriedades da nav e seus componentes*/
+nav{
+    width: 1250px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 25px;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+nav ul li a{
+    color: var(--text-color);
+    transition: all 0.1s ease;
+}
+
+.acesso a{
+    color: var(--main-color);
+}
+
+/* animações e transições */
+nav ul li a:hover{
+    color: var(--text-hover);
+}
+
+.acesso a:hover{
+    color: var(--light-red);
+}
