@@ -49,6 +49,12 @@ button{
     color: var(--black);
 }
 
+.subtitle{
+    font-size: 20px;
+    color: var(--black);
+    font-weight: 600;
+}
+
 b{
     font-size: 30px;
     color: var(--black);

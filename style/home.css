@@ -48,30 +48,102 @@ body>article .title{
 
 /* primeira section */
 
-section{
-    height: 300px;
+.section1{
+    height: 400px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 0px 200px;
 }
 
-section article{
+.section1 article{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    overflow: hidden;
 }
 
-section article img{
-    height: 200px;
+.section1 article img{
+    height: 170px;
+    transition: all 0.2s ease;
 }
 
-section article div{
+.section1 article div{
     width: 380px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+}
+
+/* animações */
+
+.section1 article img:hover{
+    animation: sino 0.5s infinite;
+}
+
+@keyframes sino {
+    50%{ 
+        transform: rotate(10deg); 
+    }
+    100%{ 
+        transform: rotate(0deg); 
+    }
+}
+
+/* segunda section */
+
+.section2{
+    height: 300px;
+    width: 100vw;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 200px;
+}
+
+.section2 .title{
+    width: 300px;
+    color: var(--white);
+}
+
+.section2 b{
+    color: var(--white);
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.cards div{
+    height: 200px;
+    width: 250px;
+    background-color: var(--white);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 10px;
+    gap: 10px;
+}
+
+.cards div p{
+    text-align: center;
+}
+
+/* animações */
+
+.cards div:hover{
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
