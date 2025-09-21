@@ -29,6 +29,34 @@ button{
     border-radius: 40px;
 }
 
+/* botão de tema */
+#tema{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+#tema img{
+    height: 30px;
+}
+
+/* botão de ocultar ou mostrar senha */
+#btn-pass{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+#btn-pass img{
+    height: 25px;
+    cursor: pointer;
+}
+
+/* definindo as propriedades da logo */
+.logo img{
+    width: 150px;
+}
+
 /* criação de variáveis */
 :root{
     --light-gray: #FAFAFA;

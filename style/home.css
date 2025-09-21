@@ -170,3 +170,7 @@ body>article .title{
 .dark .input input{
     color: var(--light-text-color);
 }
+
+.dark .cards div{
+    background-color: var(--dark-bg);
+}

@@ -11,20 +11,8 @@ header{
     z-index: 1;
 }
 
-/* botão de tema */
-.acesso>button{
-    background-color: transparent;
-    border: none;
-    padding: 0;
-}
-
-.acesso>button img{
-    height: 30px;
-}
-
-/* definindo as propriedades da logo */
-.logo img{
-    width: 150px;
+.scrolled{
+    box-shadow: 2px 2px 10px #00000031;
 }
 
 /* propriedades da nav e seus componentes*/
@@ -71,4 +59,16 @@ nav ul li a:hover{
 
 .dark nav ul li a{
     color: var(--light-text-color); 
+}
+
+.dark .acesso a:hover{
+    color: var(--light-red);
+}
+
+.dark .acesso a{
+    color: var(--main-color);
+}
+
+.dark nav ul li a:hover{
+    color: var(--text-hover); 
 }
