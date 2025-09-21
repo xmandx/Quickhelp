@@ -44,12 +44,13 @@ body>article .title{
     height: 100%;
     border: none;
     outline: none;
+    background-color: transparent;
 }
 
 /* primeira section */
 
 .section1{
-    height: 400px;
+    height: 450px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -94,21 +95,24 @@ body>article .title{
     }
 }
 
+.section1 article:hover b{
+    color: var(--main-color);
+}
+
 /* segunda section */
 
 .section2{
-    height: 300px;
+    height: 400px;
     width: 100vw;
     background-color: var(--main-color);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0px 200px;
 }
 
 .section2 .title{
-    width: 300px;
     color: var(--white);
 }
 
@@ -117,11 +121,12 @@ body>article .title{
 }
 
 .cards{
+    height: 260px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 100px;
 }
 
 .cards div{
@@ -145,5 +150,23 @@ body>article .title{
 
 .cards div:hover{
     margin-bottom: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+}
+
+.cards div:hover .subtitle{
+    color: var(--main-color);
+}
+
+/* tema escuro */
+
+.dark>article{
+    background-color: var(--dark-gray);
+}
+
+.dark .input{
+    background-color: var(--dark-bg);
+}
+
+.dark .input input{
+    color: var(--light-text-color);
 }

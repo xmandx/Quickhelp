@@ -40,6 +40,11 @@ button{
     --main-color: #D90000;
     --dark-red: #AD0000;
     --light-red: #e05a5a;
+
+    /* tema escuro */
+
+    --dark-gray: #1b1d1e;
+    --dark-bg: #181a1b;
 }
 
 /* definindo propriedade de classes */
@@ -65,4 +70,35 @@ b{
 button:hover{
     background-color: transparent;
     color: var(--main-color);
+}
+
+@keyframes opacity {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/* tema escuro */
+
+.dark{
+   background-color: var(--dark-bg); 
+}
+
+.dark .title{
+   color: var(--white);
+}
+
+.dark .subtitle{
+   color: var(--white);
+}
+
+.dark .title b{
+   color: var(--white);
+}
+
+.dark p{
+    color: var(--light-text-color);
 }

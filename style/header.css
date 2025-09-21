@@ -8,6 +8,18 @@ header{
     align-items: center;
     justify-content: center;
     position: fixed;
+    z-index: 1;
+}
+
+/* botão de tema */
+.acesso>button{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.acesso>button img{
+    height: 30px;
 }
 
 /* definindo as propriedades da logo */
@@ -49,4 +61,14 @@ nav ul li a:hover{
 
 .acesso a:hover{
     color: var(--light-red);
+}
+
+/* tema escuro */
+
+.dark header{
+    background-color: var(--dark-gray);
+}
+
+.dark nav ul li a{
+    color: var(--light-text-color); 
 }
