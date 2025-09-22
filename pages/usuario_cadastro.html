@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../assets/icon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../style/config.css">
     <link rel="stylesheet" href="../style/forms.css">
-    <title>Login - Quickhelp</title>
+    <title>Cadastro de usuário - Quickhelp</title>
 </head>
 <body>
     <header>
@@ -21,12 +21,15 @@
     </header>
     <div class="bg"></div>
     <main>
-        <img src="../assets/img/img-login.png" alt="Mulher caminhando com sacolas">
+        <img src="../assets/img/img-usuario-cadastro.png" alt="Mulher caminhando com sacolas">
         <form action="" method="post">
             <article>
-                <p class="title">Bem vindo de volta!</p>
-                <p>O que você precisa já está aqui</p>
+                <p class="title">Junte-se a nós</p>
+                <p>Cadastre-se e tenha praticidade e segurança em cada pedido</p>
             </article>
+            <div class="input">
+                <input type="text" name="name" id="name" placeholder="Nome">
+            </div>
             <div class="input">
                 <input type="email" name="email" id="email" placeholder="E-Mail">
             </div>
@@ -36,11 +39,17 @@
                     <img src="../assets/icon/mostrar.png" alt="Mostrar senha">
                 </button>
             </div>
-            <div>
-                <p>Ainda não possui conta?</p>
-                <a href="opcoes_cadastro.html">Cadastre-se</a>
+            <div class="input">
+                <input type="password" name="cpassword" id="cpassword" placeholder="Confirmar senha">
+                <button type="button" id="btn-pass2">
+                    <img src="../assets/icon/mostrar.png" alt="Mostrar senha">
+                </button>
             </div>
-            <button type="submit">Acessar</button>
+            <div>
+                <p>Já possui cadastro?</p>
+                <a href="login.html">Faça login</a>
+            </div>
+            <button type="submit">Registrar</button>
         </form>
     </main>
     <script src="../script/tema.js"></script>

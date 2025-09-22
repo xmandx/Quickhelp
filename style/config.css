@@ -41,13 +41,13 @@ button{
 }
 
 /* botão de ocultar ou mostrar senha */
-#btn-pass{
+#btn-pass, #btn-pass2{
     background-color: transparent;
     border: none;
     padding: 0;
 }
 
-#btn-pass img{
+#btn-pass img, #btn-pass2 img{
     height: 25px;
     cursor: pointer;
 }

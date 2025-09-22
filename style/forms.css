@@ -95,8 +95,38 @@ form div a{
     background-color: transparent;
 }
 
-/* tema escuro */
+form>a{
+    width: 550px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: 2px 2px 10px #00000031;
+    color: var(--main-color);
+    font-weight: 600;
+    border: 1px solid var(--main-color);
+}
 
+#backoffice{
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+/* animações */
+form>a:hover{
+    background-color: var(--light-red);
+    border: 1px solid var(--light-red);
+    color: var(--white);
+}
+
+#backoffice:hover{
+    background-color: var(--light-red);
+    border: 1px solid var(--light-red);
+}
+
+/* tema escuro */
 .dark form{
     background-color: var(--dark-gray);
 }
@@ -120,4 +150,13 @@ form div a{
 .dark form div a{
     color: var(--light-text-color);
     font-weight: 600;
+}
+
+.dark form>a{
+    background-color: var(--dark-bg);
+}
+
+.dark form>a:hover{
+    background-color: var(--light-red);
+    border: 1px solid var(--light-red);
 }
