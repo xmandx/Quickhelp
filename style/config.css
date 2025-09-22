@@ -30,13 +30,13 @@ button{
 }
 
 /* botão de tema */
-#tema{
+#tema, #menu{
     background-color: transparent;
     border: none;
     padding: 0;
 }
 
-#tema img{
+#tema img, #menu img{
     height: 30px;
 }
 

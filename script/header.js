@@ -1,3 +1,4 @@
+// box shadow ao scrollar
 var header = document.querySelector("header");
 
 window.addEventListener('scroll', function() {
@@ -7,3 +8,27 @@ window.addEventListener('scroll', function() {
         header.classList.remove("scrolled");
     }
 });
+
+// menu hamburguer
+
+var menu = document.getElementById("menu");
+var nav = document.querySelector("nav");
+
+menu.addEventListener('click', function(e){
+    e.stopPropagation();
+    
+    if (nav.classList.contains("ativado")) {
+        nav.classList.remove("ativado");
+        document.removeEventListener("click", closeOnClickOutside);
+    }else{
+        nav.classList.add("ativado");
+        document.addEventListener("click", closeOnClickOutside);
+    }
+});
+
+function closeOnClickOutside(e) {
+    if (!nav.contains(e.target) && e.target !== menu) {
+        nav.classList.remove("ativado");
+        document.removeEventListener("click", closeOnClickOutside); // remove para não acumular listeners
+    }
+}
