@@ -89,7 +89,7 @@ nav ul li a:hover{
     }
 
     nav{
-        display: none;
+        margin-right: -200px;
         padding: 20px;
         width: 200px;
         position: fixed;
@@ -106,7 +106,7 @@ nav ul li a:hover{
     }
 
     .ativado{
-        display: flex;
+        margin-right: 0px;
     }
 
     /* tema escuro */

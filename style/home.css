@@ -186,7 +186,7 @@ body>article .title {
     /* article */
     body>article {
         height: 500px;
-        padding: 100px 0px;
+        padding: 100px 20px;
     }
 
     .search {

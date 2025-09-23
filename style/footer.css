@@ -67,7 +67,7 @@ footer a img:hover {
 }
 
 /* responsividade */
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     footer {
         background-color: var(--dark-red);
         padding: 100px 20px;
