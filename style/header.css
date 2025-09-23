@@ -89,13 +89,13 @@ nav ul li a:hover{
     }
 
     nav{
-        margin-right: -200px;
+        margin-left: -200px;
         padding: 20px;
         width: 200px;
         position: fixed;
         height: 400px;
         top: 100px;
-        right: 0px;
+        left: 0px;
         flex-direction: column;
         background-color: var(--light-gray);
         border-top: 1px solid var(--white);
@@ -106,7 +106,7 @@ nav ul li a:hover{
     }
 
     .ativado{
-        margin-right: 0px;
+        margin-left: 0px;
     }
 
     /* tema escuro */

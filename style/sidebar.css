@@ -1,0 +1,37 @@
+/* Sidebar */
+.sidebar{
+    padding: 50px 20px;
+    width: 250px;
+    background: var(--main-purple);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu-item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+}
+
+.menu-item.active {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    opacity: 0.8;
+}
