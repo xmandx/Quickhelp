@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/icon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../style/config.css">
-    <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/usuario.css">
     <link rel="stylesheet" href="../style/sidebar.css">
     <title>Início - Quickhelp</title>
 </head>
@@ -16,117 +16,62 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
-                <img src="../assets/icon/logo-branca.png" alt="logo">
+                <a href="index.html">
+                    <img src="../assets/icon/logo-branca.png" alt="logo Quickhelp">
+                </a>
             </div>
             <nav>
-                <div class="menu-item">
-                    <div class="menu-icon"></div> Inicio
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"></div> Informações
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"></div> Configurações
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"></div> Sair
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"></div> Ajuda
-                </div>
+                <a href="">Inicio</a>
+                <a href="">Informações</a>
+                <a href="">Configurações</a>
+                <a href="">Ajuda</a>
+                <a href="index.html">
+                    <button>Sair</button>
+                </a>
+                <button type="button" id="tema">
+                    <img src="../assets/icon/sol-branco.png" alt="Tema escuro">
+                </button>
             </nav>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
             <div class="header">
-                <h1>Dashboard</h1>
                 <div class="user-info">
                     <input type="text" class="search-box" placeholder="Buscar...">
                     <div class="user-profile">
-                        <div class="avatar">B</div>
-                        <span>Backoffice</span>
+                        <div class="avatar">U</div>
+                        <span>Usuaria</span>
                         <span>▼</span>
                     </div>
                 </div>
             </div>
-
-            <div class="dashboard-grid">
-                <!-- Ocorrências -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Ocorrências</div>
-                        <a href="#" class="view-link">Visualizar</a>
+            <article>
+                <button type="button" id="sos">clique aqui</button>
+                <p>Em caso de emergência</p>
+            </article>
+            <!-- segunda section -->
+            <section class="section2">
+                <div class="cards">
+                    <div>
+                        <p class="subtitle">Confiável e discreto</p>
+                        <p>Sua entrega é feita com cuidado e sigilo, garantindo que tudo chegue até você da forma mais
+                            segura.</p>
                     </div>
-                    <div class="metric-label">Ocorrências do DD/MM, AAAA</div>
-                    <div class="chart-container"><canvas id="occurrencesChart"></canvas></div>
-                </div>
-
-                <!-- Atendimentos -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Atendimentos</div>
-                        <a href="#" class="view-link">Visualizar</a>
+                    <div>
+                        <p class="subtitle">Está aí em instantes</p>
+                        <p>Com apenas um toque, sua escolha chega rápido — seja comida ou a ajuda que faz diferença.</p>
                     </div>
-                    <div class="metric-label">De X-Y MM, AAAA</div>
-                    <div class="chart-container"><canvas id="attendanceChart"></canvas></div>
-                </div>
-            </div>
-
-            <div class="bottom-grid">
-                <!-- Localização -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Localização & Distribuição</div>
-                        <a href="#" class="view-link">Visualizar</a>
-                    </div>
-                    <div class="chart-container"><canvas id="locationChart"></canvas></div>
-                </div>
-
-                <!-- Reincidência -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Reincidência</div>
-                    </div>
-                    <div class="metric-label">Adipiscing elit, sed do eiusmod tempor</div>
-                    <div class="table-container">
-                        <div class="user-item">
-                            <div class="user-avatar">F</div>
-                            <div class="user-name">Fernanda Lima</div>
-                            <div class="user-count">10</div>
-                        </div>
-                        <div class="user-item">
-                            <div class="user-avatar">C</div>
-                            <div class="user-name">Carla Souza</div>
-                            <div class="user-count">7</div>
-                        </div>
-                        <div class="user-item">
-                            <div class="user-avatar">J</div>
-                            <div class="user-name">Janaína Paloma</div>
-                            <div class="user-count">5</div>
-                        </div>
-                        <div class="user-item">
-                            <div class="user-avatar">V</div>
-                            <div class="user-name">Victoria Regina</div>
-                            <div class="user-count">2</div>
-                        </div>
+                    <div>
+                        <p class="subtitle">Tudo em um só lugar</p>
+                        <p>Do sabor que você procura ao apoio que precisa, sempre disponível para você.</p>
                     </div>
                 </div>
-
-                <!-- Desempenho -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Desempenho Operacional</div>
-                        <a href="#" class="view-link">Visualizar</a>
-                    </div>
-                    <div class="metric-value">2,568</div>
-                    <div class="metric-label">De X-Y MM, AAAA</div>
-                    <div class="chart-container"><canvas id="performanceChart"></canvas></div>
-                </div>
-            </div>
+            </section>
         </div>
     </div>
     <script src="../script/dashboard.js"></script>
+    <script src="../script/tema.js"></script>
 </body>
 
 </html>

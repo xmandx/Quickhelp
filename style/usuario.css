@@ -1,0 +1,158 @@
+body {
+    background-color: var(--light-gray);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 30px;
+    background-color: var(--light-gray);
+}
+
+.header {
+    width: 100%;
+    margin-bottom: 30px;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.search-box {
+    padding: 0px 10px;
+    width: 550px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    background: #f8fafc;
+    outline: none;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #7c3aed, #a855f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+article{
+    margin-top: -20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+article button{
+    padding: 0;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    background-color: var(--main-purple);
+    border: none;
+}
+
+article button:hover{
+    transform: scale(1.05);
+    background-color: var(--main-purple);
+    color: var(--dark-purple);
+}
+
+/* segunda section */
+
+.section2 .title {
+    color: var(--white);
+}
+
+.section2 b {
+    color: var(--white);
+}
+
+.cards {
+    height: 260px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.cards div {
+    height: 200px;
+    width: 250px;
+    background-color: var(--main-purple);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 10px;
+    gap: 10px;
+}
+
+.cards div p {
+    text-align: center;
+    color: var(--light-text-color);
+}
+
+.cards .subtitle {
+    color: var(--white);
+}
+
+/* animações */
+
+.cards div:hover {
+    margin-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.cards div:hover .subtitle {
+    color: var(--dark-purple);
+}
+
+/* tema escuro */
+
+.dark *{
+    color: var(--light-text-color);
+}
+
+.dark .main-content{
+    background-color: var(--dark-bg);
+}
+
+.dark .header{
+    background-color: var(--dark-gray);
+}
+
+.dark .search-box{
+    background-color: var(--dark-bg);
+}

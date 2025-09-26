@@ -20,13 +20,11 @@ body {
     flex: 1;
     margin-left: 250px;
     padding: 30px;
-    background: #f8fafc;
+    background: var(--light-gray);
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
     margin-bottom: 30px;
     background: white;
     padding: 20px 30px;
@@ -34,25 +32,21 @@ body {
     box-shadow: 0 2px 20px rgba(0,0,0,0.05);
 }
 
-.header h1 {
-    color: #1e293b;
-    font-size: 28px;
-    font-weight: 600;
-}
-
-
 .user-info {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
 }
 
 .search-box {
-    padding: 10px 20px;
+    padding: 0px 10px;
+    width: 550px;
+    height: 40px;
     border: 1px solid #e2e8f0;
     border-radius: 25px;
     background: #f8fafc;
-    width: 300px;
+    outline: none;
 }
 
 .user-profile {

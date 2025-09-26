@@ -53,6 +53,12 @@ button{
 }
 
 /* definindo as propriedades da logo */
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .logo img{
     width: 150px;
 }
@@ -69,6 +75,7 @@ button{
     --dark-red: #AD0000;
     --light-red: #e05a5a;
     --main-purple: #7c3aed;
+    --dark-purple: #441492;
 
     /* tema escuro */
 
