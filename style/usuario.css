@@ -107,8 +107,8 @@ article button:hover{
 }
 
 .cards div {
-    height: 200px;
-    width: 250px;
+    height: 160px;
+    width: 280px;
     background-color: var(--main-purple);
     border-radius: 40px;
     display: flex;
@@ -133,6 +133,7 @@ article button:hover{
 .cards div:hover {
     margin-bottom: 10px;
     transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .cards div:hover .subtitle {
