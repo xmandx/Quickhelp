@@ -43,7 +43,7 @@ body {
     padding: 0px 10px;
     width: 550px;
     height: 40px;
-    border: 1px solid #e2e8f0;
+    border: none;
     border-radius: 25px;
     background: #f8fafc;
     outline: none;
@@ -225,4 +225,28 @@ body {
     .bottom-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* tema escuro */
+
+.dark *{
+    color: var(--light-text-color);
+}
+
+.dark .main-content{
+    background-color: var(--dark-bg);
+}
+
+.dark .header{
+    background-color: var(--dark-gray);
+}
+
+.dark .search-box{
+    background-color: var(--dark-bg);
+}
+
+.dark .card{
+    background-color: var(--dark-gray);
+    border: 1px solid var(--light-text-color);
+    border: none;
 }

@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Analytics</title>
 
   <!-- CSS externo -->
+  <link rel="stylesheet" href="../style/config.css">
+  <link rel="stylesheet" href="../style/sidebar.css">
   <link rel="stylesheet" href="../style/dashboard.css">
 
   <!-- Chart.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
+
 <body>
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <div class="logo">Logo</div>
-      <div class="menu-title">Menu</div>
-      <div class="menu-item active"><div class="menu-icon"></div> Dashboard</div>
-      <div class="menu-item"><div class="menu-icon"></div> Relatórios</div>
-      <div class="menu-item"><div class="menu-icon"></div> Configurações</div>
-      <div class="menu-item"><div class="menu-icon"></div> Contas</div>
-      <div class="menu-item"><div class="menu-icon"></div> Ajuda</div>
+      <div class="logo">
+        <a href="index.html">
+          <img src="../assets/icon/logo-branca.png" alt="logo Quickhelp">
+        </a>
+      </div>
+      <nav>
+        <a href="">Inicio</a>
+        <a href="">Informações</a>
+        <a href="">Configurações</a>
+        <a href="">Ajuda</a>
+        <a href="index.html">
+          <button>Sair</button>
+        </a>
+        <button type="button" id="tema">
+          <img src="../assets/icon/sol-branco.png" alt="Tema escuro">
+        </button>
+      </nav>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
       <div class="header">
-        <h1>Dashboard</h1>
         <div class="user-info">
           <input type="text" class="search-box" placeholder="Buscar...">
           <div class="user-profile">
@@ -72,13 +85,31 @@
 
         <!-- Reincidência -->
         <div class="card">
-          <div class="card-header"><div class="card-title">Reincidência</div></div>
+          <div class="card-header">
+            <div class="card-title">Reincidência</div>
+          </div>
           <div class="metric-label">Adipiscing elit, sed do eiusmod tempor</div>
           <div class="table-container">
-            <div class="user-item"><div class="user-avatar">F</div><div class="user-name">Fernanda Lima</div><div class="user-count">10</div></div>
-            <div class="user-item"><div class="user-avatar">C</div><div class="user-name">Carla Souza</div><div class="user-count">7</div></div>
-            <div class="user-item"><div class="user-avatar">J</div><div class="user-name">Janaína Paloma</div><div class="user-count">5</div></div>
-            <div class="user-item"><div class="user-avatar">V</div><div class="user-name">Victoria Regina</div><div class="user-count">2</div></div>
+            <div class="user-item">
+              <div class="user-avatar">F</div>
+              <div class="user-name">Fernanda Lima</div>
+              <div class="user-count">10</div>
+            </div>
+            <div class="user-item">
+              <div class="user-avatar">C</div>
+              <div class="user-name">Carla Souza</div>
+              <div class="user-count">7</div>
+            </div>
+            <div class="user-item">
+              <div class="user-avatar">J</div>
+              <div class="user-name">Janaína Paloma</div>
+              <div class="user-count">5</div>
+            </div>
+            <div class="user-item">
+              <div class="user-avatar">V</div>
+              <div class="user-name">Victoria Regina</div>
+              <div class="user-count">2</div>
+            </div>
           </div>
         </div>
 
@@ -96,5 +127,7 @@
     </div>
   </div>
   <script src="../script/dashboard.js"></script>
+  <script src="../script/tema.js"></script>
 </body>
+
 </html>
