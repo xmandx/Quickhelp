@@ -1,9 +1,9 @@
 /* estilo do login */
-*{
+* {
     overflow: hidden;
 }
 
-header{
+header {
     position: absolute;
     height: 100px;
     width: 1400px;
@@ -13,13 +13,23 @@ header{
     justify-content: space-between;
 }
 
-body{
+.logo a {
+    width: 150px;
+    height: 50px;
+    background-image: url(../assets/icon/logo-branca.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.bg{
+.bg {
     left: -25vh;
     top: -25vh;
     height: 150vh;
@@ -30,11 +40,11 @@ body{
     border-radius: 100%;
 }
 
-.title{
+.title {
     font-weight: 600;
 }
 
-main{
+main {
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -43,11 +53,11 @@ main{
     gap: 200px;
 }
 
-main>img{
+main>img {
     width: 35%;
 }
 
-form{
+form {
     background-color: var(--light-gray);
     border-radius: 40px;
     padding: 80px 50px;
@@ -58,7 +68,7 @@ form{
     gap: 20px;
 }
 
-form div{
+form div {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -67,11 +77,11 @@ form div{
     gap: 5px;
 }
 
-form div a{
+form div a {
     font-weight: 600;
 }
 
-.input{
+.input {
     height: 40px;
     width: 550px;
     display: flex;
@@ -83,11 +93,11 @@ form div a{
     border-radius: 40px;
 }
 
-.input img{
+.input img {
     height: 30px;
 }
 
-.input input{
+.input input {
     width: 100%;
     height: 100%;
     border: none;
@@ -95,7 +105,7 @@ form div a{
     background-color: transparent;
 }
 
-form>a{
+form>a {
     width: 550px;
     height: 40px;
     border-radius: 40px;
@@ -109,54 +119,152 @@ form>a{
     border: 1px solid var(--main-color);
 }
 
-#backoffice{
+#backoffice {
     background-color: var(--main-color);
     color: var(--white);
 }
 
 /* animações */
-form>a:hover{
+form>a:hover {
     background-color: var(--light-red);
     border: 1px solid var(--light-red);
     color: var(--white);
 }
 
-#backoffice:hover{
+#backoffice:hover {
     background-color: var(--light-red);
     border: 1px solid var(--light-red);
 }
 
 /* tema escuro */
-.dark form{
+.dark form {
     background-color: var(--dark-gray);
 }
 
-.dark .input{
+.dark .input {
     background-color: var(--dark-bg);
 }
 
-.dark .input input{
+.dark .input input {
     color: var(--light-text-color);
 }
 
-.dark .cards div{
+.dark .cards div {
     background-color: var(--dark-bg);
 }
 
-.dark .bg{
+.dark .bg {
     background-color: var(--dark-red);
 }
 
-.dark form div a{
+.dark form div a {
     color: var(--light-text-color);
     font-weight: 600;
 }
 
-.dark form>a{
+.dark form>a {
     background-color: var(--dark-bg);
 }
 
-.dark form>a:hover{
+.dark form>a:hover {
     background-color: var(--light-red);
     border: 1px solid var(--light-red);
+}
+
+/* responsividade */
+
+@media (max-width: 800px) {
+    p{
+        text-align: center;
+    }
+    header {
+        height: 200px;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo a {
+        background-image: url(../assets/icon/logo-vermelha.png);
+        position: absolute;
+        width: 200px;
+    }
+
+    #tema {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+    }
+
+    .bg {
+        display: none;
+    }
+
+    main {
+        height: 100vh;
+        width: 90%;
+    }
+
+    main>img {
+        display: none;
+    }
+
+    form {
+        width: 100%;
+        max-width: 550px;
+        background-color: var(--light-gray);
+        padding: 40px 20px;
+        align-items: center;
+    }
+
+    form article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    form>a{
+        width: 100%;
+    }
+
+    .input:has(button) input{
+        width: 94%;
+    }
+
+    .input {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    form>button {
+        width: 100%;
+    }
+
+    form div a {
+        font-size: 12px;
+    }
+
+    form div p {
+        font-size: 12px;
+    }
+
+    /* animações */
+
+    .input:has(input:focus) {
+        border: 1px solid var(--main-color);
+    }
+
+}
+
+@media (max-width: 500px) {
+    form {
+        padding: 40px 15px;
+    }
 }
