@@ -9,6 +9,7 @@ header{
     justify-content: center;
     position: fixed;
     z-index: 1;
+    opacity: 1;
 }
 
 #menu{

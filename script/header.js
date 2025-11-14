@@ -5,17 +5,20 @@ window.addEventListener('scroll', function () {
     if (window.scrollY > 0) {
         header.classList.add("scrolled");
         header.style.opacity = "0.7";
-
-        header.addEventListener('mouseover', function () {
-            header.style.opacity = "1";
-        });
-
-        header.addEventListener('mouseleave', function () {
-            header.style.opacity = "0.7";
-        });
-
     } else {
         header.classList.remove("scrolled");
+        header.style.opacity = "1";
+    }
+});
+
+header.addEventListener('mouseover', function () {
+    header.style.opacity = "1";
+});
+
+header.addEventListener('mouseleave', function () {
+    if (window.scrollY > 0) {
+        header.style.opacity = "0.7";
+    } else {
         header.style.opacity = "1";
     }
 });
