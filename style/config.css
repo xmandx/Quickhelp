@@ -48,7 +48,7 @@ button{
 }
 
 #btn-pass img, #btn-pass2 img{
-    height: 25px;
+    height: 20px;
     cursor: pointer;
 }
 
@@ -65,6 +65,7 @@ button{
 
 /* criação de variáveis */
 :root{
+    --shadow: #dfdfdf;
     --light-gray: #FAFAFA;
     --white: #FFFFFF;
     --black: #000000;
@@ -81,6 +82,7 @@ button{
 
     --dark-gray: #1b1d1e;
     --dark-bg: #181a1b;
+    --dark-shadow: #0f0f0f;
 }
 
 /* definindo propriedade de classes */
@@ -96,9 +98,15 @@ button{
     font-weight: 600;
 }
 
-b{
+.title b{
     font-size: 30px;
     color: var(--black);
+    font-weight: 600;
+}
+
+p b{
+    font-size: 1rem;
+    color: var(--text-color);
     font-weight: 600;
 }
 
@@ -133,8 +141,14 @@ button:hover{
 
 .dark .title b{
    color: var(--white);
+   font-size: 30px;
 }
 
 .dark p{
     color: var(--light-text-color);
+}
+.dark p b{
+    font-size: 1rem;
+    color: var(--light-text-color);
+    font-weight: 600;
 }

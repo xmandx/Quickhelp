@@ -1,11 +1,22 @@
 // box shadow ao scrollar
 var header = document.querySelector("header");
 
-window.addEventListener('scroll', function() {
-    if(window.scrollY > 0){
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 0) {
         header.classList.add("scrolled");
-    }else{
+        header.style.opacity = "0.7";
+
+        header.addEventListener('mouseover', function () {
+            header.style.opacity = "1";
+        });
+
+        header.addEventListener('mouseleave', function () {
+            header.style.opacity = "0.7";
+        });
+
+    } else {
         header.classList.remove("scrolled");
+        header.style.opacity = "1";
     }
 });
 
@@ -14,13 +25,13 @@ window.addEventListener('scroll', function() {
 var menu = document.getElementById("menu");
 var nav = document.querySelector("nav");
 
-menu.addEventListener('click', function(e){
+menu.addEventListener('click', function (e) {
     e.stopPropagation();
-    
+
     if (nav.classList.contains("ativado")) {
         nav.classList.remove("ativado");
         document.removeEventListener("click", closeOnClickOutside);
-    }else{
+    } else {
         nav.classList.add("ativado");
         document.addEventListener("click", closeOnClickOutside);
     }
