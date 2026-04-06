@@ -59,27 +59,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }));
 
-  // Localização (Bubble)
-  safeCreateChart('locationChart', (ctx) => new Chart(ctx, {
-    type: 'bubble',
-    data: {
-      datasets: [
-        { label: 'São Paulo', data: [{x:50,y:50,r:50}], backgroundColor: 'rgba(124,58,237,0.8)' },
-        { label: 'Santo André', data: [{x:25,y:75,r:35}], backgroundColor: 'rgba(168,85,247,0.8)' },
-        { label: 'Mauá', data: [{x:75,y:25,r:30}], backgroundColor: 'rgba(196,181,253,0.8)' }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      scales: { x: { display: false }, y: { display: false } },
-      plugins: {
-        legend: { display: true, position: 'bottom', labels: { usePointStyle: true, padding: 15, color: '#64748b' } },
-        tooltip: {
-          callbacks: { label: function(context) { return context.dataset.label + ': ' + Math.round(context.parsed.r) + '%'; } }
-        }
-      }
-    }
-  }));
+  // // Localização (Bubble)
+  // safeCreateChart('locationChart', (ctx) => new Chart(ctx, {
+  //   type: 'bubble',
+  //   data: {
+  //     datasets: [
+  //       { label: 'São Paulo', data: [{x:50,y:50,r:50}], backgroundColor: 'rgba(124,58,237,0.8)' },
+  //       { label: 'Santo André', data: [{x:25,y:75,r:35}], backgroundColor: 'rgba(168,85,247,0.8)' },
+  //       { label: 'Mauá', data: [{x:75,y:25,r:30}], backgroundColor: 'rgba(196,181,253,0.8)' }
+  //     ]
+  //   },
+  //   options: {
+  //     responsive: true, maintainAspectRatio: false,
+  //     scales: { x: { display: false }, y: { display: false } },
+  //     plugins: {
+  //       legend: { display: true, position: 'bottom', labels: { usePointStyle: true, padding: 15, color: '#64748b' } },
+  //       tooltip: {
+  //         callbacks: { label: function(context) { return context.dataset.label + ': ' + Math.round(context.parsed.r) + '%'; } }
+  //       }
+  //     }
+  //   }
+  // }));
 
   // Desempenho (Line)
   safeCreateChart('performanceChart', (ctx) => new Chart(ctx, {

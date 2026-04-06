@@ -66,94 +66,22 @@ body {
     font-weight: bold;
 }
 
-article{
-    margin-top: -20px;
-    width: 100%;
+.contatos, .enderecos {
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    gap: 20px;
-}
-
-form{
-    padding: 20px;
-}
-
-article button{
-    padding: 0;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    text-transform: uppercase;
-    background-color: var(--main-purple);
-    border: none;
-}
-
-article button:hover{
-    animation: pulsar 0.4s ease-in-out infinite alternate;
-    background-color: var(--main-purple);
-    color: var(--dark-purple);
-}
-
-@keyframes pulsar {
-    100%{
-        transform: scale(1.05);
-    }
-}
-
-/* segunda section */
-
-.section2 .title {
-    color: var(--white);
-}
-
-.section2 b {
-    color: var(--white);
-}
-
-.cards {
-    height: 260px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-}
-
-.cards div {
-    height: 160px;
-    width: 280px;
-    background-color: var(--main-purple);
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 40px 10px;
     gap: 10px;
 }
 
-.cards div p {
-    text-align: center;
-    color: var(--light-text-color);
-}
-
-.cards .subtitle {
-    color: var(--white);
-}
-
-/* animações */
-
-.cards div:hover {
-    margin-bottom: 10px;
-    transition: all 0.5s ease;
-    cursor: pointer;
-}
-
-.cards div:hover .subtitle {
-    color: var(--dark-purple);
+.contact-item {
+    background-color: #f8fafc;
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
 }
 
 /* tema escuro */
@@ -174,6 +102,10 @@ article button:hover{
     background-color: var(--dark-bg);
 }
 
-.dark .contatos{
+.dark .contatos, .dark .enderecos {
     background-color: var(--dark-gray);
+}
+
+.dark .contact-item {
+    background-color: var(--dark-bg);
 }

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION)) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +30,8 @@
                 </a>
             </div>
             <nav>
-                <a href="">Inicio</a>
-                <a href="">Informações</a>
+                <a href="usuario.php">Inicio</a>
+                <a href="informacoes.php">Informações</a>
                 <a href="">Configurações</a>
                 <a href="">Ajuda</a>
                 <a href="../index.php">
@@ -40,23 +49,43 @@
                 <div class="user-info">
                     <input type="text" class="search-box" placeholder="Buscar...">
                     <div class="user-profile">
-                        <div class="avatar">U</div>
-                        <span>Usuaria</span>
+                        <div class="avatar"><?php echo substr($_SESSION['user_name'], 0, 1); ?></div>
+                        <span><?php echo $_SESSION['user_name']; ?></span>
                         <span>▼</span>
                     </div>
                 </div>
             </div>
             <article>
-                <button type="button" id="sos">clique aqui</button>
+                <?php
+                include '../config/config.php';
+
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $insert_sos = "INSERT INTO sos (id_user) VALUES (?)";
+                    $stmt = $conn->prepare($insert_sos);
+                    $stmt->bind_param("i", $_SESSION['user_id']);
+                    if ($stmt->execute()) {
+                        echo "<script>
+                            alert('Emergência acionada! A ajuda está a caminho.');
+                        </script>";
+                    } else {
+                        echo "<p>Erro ao acionar o SOS: " . $stmt->error . "</p>";
+                    }
+                }
+                ?>
+                <form method="post">
+                    <button type="submit">clique aqui</button>
+                </form>
                 <p>Em caso de emergência</p>
             </article>
             <!-- segunda section -->
             <section class="section2">
                 <div class="cards">
-                    <div>
-                        <p class="subtitle">Contatos de Emergência</p>
-                        <p>Clique aqui para ter acesso aos seus contatos de emergência</p>
-                    </div>
+                    <a href="informacoes.php">
+                        <div>
+                            <p class="subtitle">Contatos de Emergência</p>
+                            <p>Clique aqui para ter acesso aos seus contatos de emergência</p>
+                        </div>
+                    </a>
                     <div>
                         <p class="subtitle">Central de ajuda</p>
                         <p>Clique aqui para acionar a central de ajuda</p>
@@ -67,6 +96,22 @@
                     </div>
                 </div>
             </section>
+            <?php
+            $select_sos = "SELECT * FROM sos WHERE id_user = ?";
+            $stmt = $conn->prepare($select_sos);
+            $stmt->bind_param("i", $_SESSION['user_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                echo "<div style='display:flex; gap:10px; flex-direction:column'><p class='subtitle'>Contatos de Emergência Acionados</p><ul>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li>SOS acionado em: " . $row['date_sos'] . "</li>";
+                }
+                echo "</ul></div>";
+            } else {
+                echo "<p>Nenhum SOS acionado recentemente.</p>";
+            }
+            ?>
         </div>
     </div>
     <script src="../script/dashboard.js"></script>

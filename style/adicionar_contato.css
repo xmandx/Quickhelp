@@ -19,6 +19,9 @@ body {
     margin-left: 250px;
     padding: 30px;
     background-color: var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header {
@@ -66,93 +69,48 @@ body {
     font-weight: bold;
 }
 
-article{
-    margin-top: -20px;
-    width: 100%;
+form{
+    width: 650px;
+    background-color: var(--light-gray);
+    border-radius: 40px;
+    padding: 50px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     gap: 20px;
+    box-shadow: var(--shadow) 0px 0px 15px;
 }
 
-form{
-    padding: 20px;
-}
-
-article button{
-    padding: 0;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    text-transform: uppercase;
-    background-color: var(--main-purple);
-    border: none;
-}
-
-article button:hover{
-    animation: pulsar 0.4s ease-in-out infinite alternate;
-    background-color: var(--main-purple);
-    color: var(--dark-purple);
-}
-
-@keyframes pulsar {
-    100%{
-        transform: scale(1.05);
-    }
-}
-
-/* segunda section */
-
-.section2 .title {
-    color: var(--white);
-}
-
-.section2 b {
-    color: var(--white);
-}
-
-.cards {
-    height: 260px;
+.input {
+    height: 40px;
+    width: 550px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 100px;
-}
-
-.cards div {
-    height: 160px;
-    width: 280px;
-    background-color: var(--main-purple);
+    background-color: var(--white);
+    padding: 0px 15px;
     border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 40px 10px;
-    gap: 10px;
 }
 
-.cards div p {
-    text-align: center;
-    color: var(--light-text-color);
+.input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
-.cards .subtitle {
+button{
+    background-color: var(--dark-purple);
+    border: 1px solid var(--dark-purple);
     color: var(--white);
 }
 
-/* animações */
-
-.cards div:hover {
-    margin-bottom: 10px;
-    transition: all 0.5s ease;
-    cursor: pointer;
-}
-
-.cards div:hover .subtitle {
+button:hover{
+    background-color: transparent;
+    border: 1px solid var(--dark-purple);
     color: var(--dark-purple);
 }
 
@@ -174,6 +132,27 @@ article button:hover{
     background-color: var(--dark-bg);
 }
 
-.dark .contatos{
+.dark .input {
+    background-color: var(--dark-bg);
+}
+
+.dark .input input {
+    color: var(--light-text-color);
+}
+
+.dark form{
     background-color: var(--dark-gray);
+    box-shadow: var(--dark-shadow) 0px 0px 15px;
+}
+
+.dark button{
+    background-color: var(--main-purple);
+    border: 1px solid var(--main-purple);
+    color: var(--white);
+}
+
+.dark button:hover{
+    background-color: transparent;
+    border: 1px solid var(--main-purple);
+    color: var(--white);
 }

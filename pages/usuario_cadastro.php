@@ -65,8 +65,10 @@
                             echo "<p style='color: var(--main-color)'>As senhas não coincidem!</p>";
                         } else {
                             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                            $sql = "INSERT INTO user (name_user, email_user, password_user) VALUES ('$name', '$email', '$hashed_password')";
-                            if (mysqli_query($conn, $sql)) {
+                            $sql = "INSERT INTO user (name_user, email_user, password_user) VALUES (?, ?, ?)";
+                            $stmt = mysqli_prepare($conn, $sql);
+                            mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashed_password);
+                            if (mysqli_stmt_execute($stmt)) {
                                 echo '<script>alert("Cadastro realizado com sucesso!"); window.location.href = "login.php";</script>';
                             } else {
                                 echo "<p style='color: var(--main-color)'>Erro ao cadastrar usuário: " . mysqli_error($conn) . "</p>";

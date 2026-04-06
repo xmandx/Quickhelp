@@ -4,7 +4,7 @@ var body = document.body;
 
 window.addEventListener('load', function () {
     if (localStorage.getItem("tema") == "dark") {
-        if ((window.location.href.includes("usuario.php")) || (window.location.href.includes("dashboard.php"))) {
+        if ((window.location.href.includes("usuario.php")) || (window.location.href.includes("dashboard.php")) || (window.location.href.includes("informacoes.php")) || (window.location.href.includes("adicionar_contato.php")) || (window.location.href.includes("adicionar_endereco.php"))) {
             body.classList.add("dark");
             img.src = "../assets/icon/lua-branca.png";
             img.alt = "Tema claro";

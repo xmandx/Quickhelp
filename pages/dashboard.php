@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION)) {
+  header("Location: login.php");
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -45,8 +54,8 @@
         <div class="user-info">
           <input type="text" class="search-box" placeholder="Buscar...">
           <div class="user-profile">
-            <div class="avatar">B</div>
-            <span>Backoffice</span>
+            <div class="avatar"><?php echo substr($_SESSION['user_name'], 0, 1); ?></div>
+            <span><?php echo $_SESSION['user_name']; ?></span>
             <span>▼</span>
           </div>
         </div>
@@ -74,8 +83,8 @@
             echo '<button type="submit" class="delete-btn">Excluir</button>';
             echo '</form>';
 
-            if (isset($_POST['delete_message'])){
-              $id = $_POST['delete_message'];  
+            if (isset($_POST['delete_message'])) {
+              $id = $_POST['delete_message'];
 
               $delete_sql = "DELETE FROM message WHERE id_message = $id";
               if (mysqli_query($conn, $delete_sql)) {
@@ -116,41 +125,122 @@
 
       <div class="bottom-grid">
         <!-- Localização -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Localização & Distribuição</div>
-            <a href="#" class="view-link">Visualizar</a>
-          </div>
-          <div class="chart-container"><canvas id="locationChart"></canvas></div>
-        </div>
+        <!-- Localização -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Localização & Distribuição</div>
+    <a href="#" class="view-link">Visualizar</a>
+  </div>
+
+  <?php
+    include '../config/config.php';
+
+    $sql = "SELECT city_address, COUNT(*) as total 
+            FROM adress 
+            GROUP BY city_address";
+
+    $result = mysqli_query($conn, $sql);
+
+    $data = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+      $data[] = $row;
+    }
+  ?>
+
+  <div class="chart-container">
+    <canvas id="locationChart"></canvas>
+  </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const dados = <?php echo json_encode($data); ?>;
+
+  console.log(dados); // debug (pode remover depois)
+
+  const cores = [
+    'rgba(124,58,237,0.8)',
+    'rgba(168,85,247,0.8)',
+    'rgba(196,181,253,0.8)',
+    'rgba(59,130,246,0.8)'
+  ];
+
+  const datasets = dados.map((item, index) => ({
+    label: item.city_address,
+    data: [{
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      r: Math.max(1, parseInt(item.total) * 20)
+    }],
+    backgroundColor: cores[index % cores.length]
+  }));
+
+  const ctx = document.getElementById('locationChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bubble',
+    data: {
+      datasets: datasets
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { display: false },
+        y: { display: false }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            padding: 15,
+            color: '#64748b'
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              return context.dataset.label + ': ' + context.raw.r/20 + ' registros';
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
+<style>
+  .chart-container {
+    height: 300px;
+  }
+</style>
 
         <!-- Reincidência -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">Reincidência</div>
           </div>
-          <div class="metric-label">Adipiscing elit, sed do eiusmod tempor</div>
           <div class="table-container">
-            <div class="user-item">
-              <div class="user-avatar">F</div>
-              <div class="user-name">Fernanda Lima</div>
-              <div class="user-count">10</div>
-            </div>
-            <div class="user-item">
-              <div class="user-avatar">C</div>
-              <div class="user-name">Carla Souza</div>
-              <div class="user-count">7</div>
-            </div>
-            <div class="user-item">
-              <div class="user-avatar">J</div>
-              <div class="user-name">Janaína Paloma</div>
-              <div class="user-count">5</div>
-            </div>
-            <div class="user-item">
-              <div class="user-avatar">V</div>
-              <div class="user-name">Victoria Regina</div>
-              <div class="user-count">2</div>
-            </div>
+            <?php
+            $select = "SELECT name_user, total_sos FROM reincidencia LIMIT 5";
+            $result = mysqli_query($conn, $select);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['total_sos'] > 0) {
+                  echo '<div class="user-item">';
+                  echo '<div class="user-avatar">' . substr($row['name_user'], 0, 1) . '</div>';
+                  echo '<div class="user-name">' . $row['name_user'] . '</div>';
+                  echo '<div class="user-count">' . $row['total_sos'] . '</div>';
+                  echo '</div>';
+                }
+              }
+            }
+            ?>
           </div>
         </div>
 

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,16 +50,18 @@
                     $email = $_POST['email'];
                     $password = $_POST['password'];
                     
-                    if ($email == "" || $password == "") {
+                    if (empty($email) || empty($password)) {
                         echo "<p style='color: var(--main-color)'>Preencha todos os campos!</p>";
                     } else {
-                        $sql = "SELECT * FROM user WHERE email_user = '$email'";
-                        $result = mysqli_query($conn, $sql);
-                        
+                        $sql = "SELECT * FROM user WHERE email_user = ?";
+                        $stmt = mysqli_prepare($conn, $sql);
+                        mysqli_stmt_bind_param($stmt, "s", $email);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+
                         if (mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
                             if (password_verify($password, $row['password_user'])) {
-                                session_start();
                                 $_SESSION['user_id'] = $row['id_user'];
                                 $_SESSION['user_name'] = $row['name_user'];
                                 $_SESSION['user_email'] = $row['email_user'];
@@ -68,10 +74,10 @@
                                 }
                                 exit();
                             } else {
-                                echo "<p style='color: var(--main-color)'>Senha incorreta!</p>";
+                                echo "<p style='color: var(--main-color)'>Email ou senha incorretos!</p>";
                             }
                         } else {
-                            echo "<p style='color: var(--main-color)'>Usuário não encontrado!</p>";
+                            echo "<p style='color: var(--main-color)'>Email ou senha incorretos!</p>";
                         }
                     }
                 }
