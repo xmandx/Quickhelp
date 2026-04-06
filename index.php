@@ -220,7 +220,6 @@
         <p>© Copyright 2025 - Quickhelp - Todos os direitos reservados</p>
     </footer>
     <script src="script/header.js"></script>
-    <script src="script/tema.js"></script>
     <script src="script/home.js"></script>
 </body>
 
