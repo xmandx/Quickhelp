@@ -38,10 +38,10 @@
             </ul>
             <ul class="acesso">
                 <li>
-                    <a href="pages/opcoes_cadastro.html">Criar conta</a>
+                    <a href="pages/opcoes_cadastro.php">Criar conta</a>
                 </li>
                 <li>
-                    <a href="pages/login.html">
+                    <a href="pages/login.php">
                         <button>Entrar</button>
                     </a>
                 </li>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </article>
-        <form method="post">
+        <form method="post" style="max-width: 58%">
             <p class="title"><b>Diga algo</b></p>
             <div class="input">
                 <input type="text" name="name" id="name" placeholder="Nome">

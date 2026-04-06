@@ -15,6 +15,39 @@ body {
     min-height: 100vh;
 }
 
+.mensagens {
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.mensagem-item {
+    margin: 10px 0;
+    background-color: var(--light-gray);
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+}
+
+.mensagem-date {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.delete-btn{
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #dc2626;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 /* Main Content */
 .main-content {
     flex: 1;
@@ -237,6 +270,15 @@ body {
     background-color: var(--dark-bg);
 }
 
+.dark .mensagens{
+    background-color: var(--dark-gray);
+}
+
+.dark .mensagem-item {
+    margin: 10px 0;
+    background-color: var(--dark-bg);
+}
+
 .dark .header{
     background-color: var(--dark-gray);
 }
@@ -249,4 +291,8 @@ body {
     background-color: var(--dark-gray);
     border: 1px solid var(--light-text-color);
     border: none;
+}
+
+.dark .delete-btn{
+    color: red;
 }

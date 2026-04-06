@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="../index.html">
+            <a href="../index.php">
             </a>
         </div>
         <button type="button" id="tema">
@@ -26,8 +26,8 @@
                 <p class="title">Um clique para começar</p>
                 <p>Selecione uma das opções</p>
             </article>
-            <a href="usuario_cadastro.html">Sou cliente</a>
-            <a href="backoffice_cadastro.html" id="backoffice"> Sou backoffice</a>
+            <a href="usuario_cadastro.php">Sou cliente</a>
+            <a href="backoffice_cadastro.php" id="backoffice"> Sou backoffice</a>
         </form>
     </main>
     <script src="../script/tema.js"></script>

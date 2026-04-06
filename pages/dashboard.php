@@ -21,7 +21,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <div class="logo">
-        <a href="../index.html">
+        <a href="../index.php">
           <img src="../assets/icon/logo-branca.png" alt="logo Quickhelp">
         </a>
       </div>
@@ -30,7 +30,7 @@
         <a href="">Informações</a>
         <a href="">Configurações</a>
         <a href="">Ajuda</a>
-        <a href="../index.html">
+        <a href="../index.php">
           <button>Sair</button>
         </a>
         <button type="button" id="tema">
@@ -50,6 +50,46 @@
             <span>▼</span>
           </div>
         </div>
+      </div>
+
+      <div class="mensagens">
+        <div class="card-title">Mensagens</div>
+        <?php
+        include '../config/config.php';
+        $sql = "SELECT * FROM message ORDER BY id_message DESC LIMIT 5";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="mensagem-item">';
+            echo '<style>';
+            echo '.mensagem-user { font-weight: bold; }';
+            echo '.mensagem-text { color: #666; }';
+            echo '.mensagem-date { font-size: 12px; color: #999; }';
+            echo '</style>';
+            echo '<div class="mensagem-user">' . $row["name_message"] . '</div>';
+            echo '<div class="mensagem-text">' . $row["message_message"] . '</div>';
+            echo '<div class="mensagem-date">' . date("d/m/Y H:i", strtotime($row["date_message"])) . '</div>';
+            echo '<form method="POST">';
+            echo '<input type="hidden" name="delete_message" value="' . $row["id_message"] . '">';
+            echo '<button type="submit" class="delete-btn">Excluir</button>';
+            echo '</form>';
+
+            if (isset($_POST['delete_message'])){
+              $id = $_POST['delete_message'];  
+
+              $delete_sql = "DELETE FROM message WHERE id_message = $id";
+              if (mysqli_query($conn, $delete_sql)) {
+                echo '<script>alert("Mensagem excluída com sucesso!"); window.location.href = "dashboard.php";</script>';
+              } else {
+                echo '<script>alert("Erro ao excluir mensagem: ' . mysqli_error($conn) . '");</script>';
+              }
+            }
+            echo '</div>';
+          }
+        } else {
+          echo 'Nenhuma mensagem recente.';
+        }
+        ?>
       </div>
 
       <div class="dashboard-grid">

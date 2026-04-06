@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="../index.html">
+            <a href="../index.php">
             </a>
         </div>
         <button type="button" id="tema">
@@ -21,7 +21,7 @@
     <div class="bg"></div>
     <main>
         <img src="../assets/img/img-usuario-cadastro.png" alt="Mulher caminhando com sacolas">
-        <form action="usuario.html">
+        <form method="post">
             <article>
                 <p class="title">Junte-se a nós</p>
                 <p>Cadastre-se e tenha praticidade e segurança em cada pedido</p>
@@ -47,9 +47,34 @@
             <span id="info"></span>
             <div>
                 <p>Já possui cadastro?</p>
-                <a href="login.html">Faça login</a>
+                <a href="login.php">Faça login</a>
             </div>
             <button type="submit">Registrar</button>
+            <?php
+                include '../config/config.php';
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    $c_password = $_POST['cpassword'];
+                    
+                    if ($name == "" || $email == "" || $password == "" || $c_password == "") {
+                        echo "<p style='color: var(--main-color)'>Preencha todos os campos!</p>";
+                    }else{
+                        if ($password != $c_password) {
+                            echo "<p style='color: var(--main-color)'>As senhas não coincidem!</p>";
+                        } else {
+                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                            $sql = "INSERT INTO user (name_user, email_user, password_user) VALUES ('$name', '$email', '$hashed_password')";
+                            if (mysqli_query($conn, $sql)) {
+                                echo '<script>alert("Cadastro realizado com sucesso!"); window.location.href = "login.php";</script>';
+                            } else {
+                                echo "<p style='color: var(--main-color)'>Erro ao cadastrar usuário: " . mysqli_error($conn) . "</p>";
+                            }
+                        }
+                    }
+                }
+            ?>
         </form>
     </main>
     <script src="../script/tema.js"></script>

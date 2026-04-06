@@ -11,12 +11,14 @@ setInterval(() => {
     span.textContent = contador;
 }, 100);
 
-// tirando o refresh
-var form = document.querySelector("form");
+// // tirando o refresh
+// var forms = document.querySelectorAll("form");
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault;
-});
+// forms.forEach(function(form) {
+//     form.addEventListener('submit', function(event) {
+//         event.preventDefault();
+//     });
+// });
 
 // tema
 var btn = document.getElementById("tema");
