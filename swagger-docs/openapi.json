@@ -1,0 +1,460 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Quickhelp API",
+    "description": "Especificação da API do sistema Quickhelp para gerenciamento de contatos de emergência, SOS e comunicações de backoffice.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000/api",
+      "description": "Servidor Local"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Autenticar usuário",
+        "description": "Realiza a autenticação retornando os dados do usuário.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email_user", "password_user"],
+                "properties": {
+                  "email_user": { "type": "string", "format": "email", "example": "alice@example.com" },
+                  "password_user": { "type": "string", "format": "password", "example": "password123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Autenticado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Login realizado com sucesso!" },
+                    "user": { "$ref": "#/components/schemas/User" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciais inválidas"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Listar usuários",
+        "responses": {
+          "200": {
+            "description": "Lista de usuários cadastrados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/User" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastrar usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name_user", "email_user", "password_user"],
+                "properties": {
+                  "name_user": { "type": "string", "example": "John Doe" },
+                  "email_user": { "type": "string", "format": "email", "example": "john@example.com" },
+                  "password_user": { "type": "string", "example": "password123" },
+                  "rule_user": { "type": "string", "enum": ["user", "backoffice"], "example": "user" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Cadastro realizado com sucesso!" },
+                    "data": { "$ref": "#/components/schemas/User" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Visualizar usuário",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalhes do usuário",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/User" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar usuário",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name_user": { "type": "string", "example": "John Updated" },
+                  "email_user": { "type": "string", "format": "email", "example": "john.upd@example.com" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Usuário atualizado" }
+        }
+      },
+      "delete": {
+        "summary": "Deletar usuário",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Usuário excluído" }
+        }
+      }
+    },
+    "/contacts": {
+      "get": {
+        "summary": "Listar contatos",
+        "parameters": [
+          { "name": "id_user", "in": "query", "required": false, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de contatos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Contact" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar contato",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id_user", "name_contact", "phone_contact"],
+                "properties": {
+                  "id_user": { "type": "integer", "example": 2 },
+                  "name_contact": { "type": "string", "example": "Mãe" },
+                  "phone_contact": { "type": "string", "example": "11999999999" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Contato criado" }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "put": {
+        "summary": "Atualizar contato",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name_contact": { "type": "string", "example": "Mãe Editada" },
+                  "phone_contact": { "type": "string", "example": "11988888888" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Contato atualizado" }
+        }
+      },
+      "delete": {
+        "summary": "Deletar contato",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Contato excluído" }
+        }
+      }
+    },
+    "/addresses": {
+      "get": {
+        "summary": "Listar endereços",
+        "parameters": [
+          { "name": "id_user", "in": "query", "required": false, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de endereços",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Address" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar endereço",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id_user", "state_address", "city_address", "neighborhood_address", "street_address", "number_address"],
+                "properties": {
+                  "id_user": { "type": "integer", "example": 2 },
+                  "state_address": { "type": "string", "example": "SP" },
+                  "city_address": { "type": "string", "example": "São Paulo" },
+                  "neighborhood_address": { "type": "string", "example": "Bela Vista" },
+                  "street_address": { "type": "string", "example": "Av Paulista" },
+                  "number_address": { "type": "string", "example": "100" },
+                  "complement_address": { "type": "string", "example": "Sala 10" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Endereço criado" }
+        }
+      }
+    },
+    "/addresses/{id}": {
+      "put": {
+        "summary": "Atualizar endereço",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "state_address": { "type": "string", "example": "RJ" },
+                  "city_address": { "type": "string", "example": "Rio de Janeiro" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Endereço atualizado" }
+        }
+      },
+      "delete": {
+        "summary": "Deletar endereço",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Endereço excluído" }
+        }
+      }
+    },
+    "/messages": {
+      "get": {
+        "summary": "Listar mensagens de contato",
+        "responses": {
+          "200": {
+            "description": "Lista de mensagens",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Message" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Enviar mensagem de contato",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name_message", "email_message", "message_message"],
+                "properties": {
+                  "name_message": { "type": "string", "example": "Felipe" },
+                  "email_message": { "type": "string", "format": "email", "example": "felipe@example.com" },
+                  "message_message": { "type": "string", "example": "Mensagem enviada pelo form da home." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Mensagem criada" }
+        }
+      }
+    },
+    "/messages/{id}": {
+      "delete": {
+        "summary": "Deletar mensagem",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Mensagem deletada" }
+        }
+      }
+    },
+    "/sos": {
+      "get": {
+        "summary": "Listar chamados SOS",
+        "responses": {
+          "200": {
+            "description": "Lista de SOS acionados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Sos" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Acionar SOS",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id_user"],
+                "properties": {
+                  "id_user": { "type": "integer", "example": 2 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "SOS registrado" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id_user": { "type": "integer", "example": 1 },
+          "name_user": { "type": "string", "example": "Alice Silva" },
+          "email_user": { "type": "string", "example": "alice@example.com" },
+          "rule_user": { "type": "string", "enum": ["user", "backoffice"], "example": "user" }
+        }
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id_contact": { "type": "integer", "example": 1 },
+          "id_user": { "type": "integer", "example": 2 },
+          "name_contact": { "type": "string", "example": "Mãe" },
+          "phone_contact": { "type": "string", "example": "11999999999" }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "id_address": { "type": "integer", "example": 1 },
+          "id_user": { "type": "integer", "example": 2 },
+          "state_address": { "type": "string", "example": "SP" },
+          "city_address": { "type": "string", "example": "São Paulo" },
+          "neighborhood_address": { "type": "string", "example": "Bela Vista" },
+          "street_address": { "type": "string", "example": "Av Paulista" },
+          "number_address": { "type": "string", "example": "100" },
+          "complement_address": { "type": "string", "example": "Apto 10" }
+        }
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "id_message": { "type": "integer", "example": 1 },
+          "name_message": { "type": "string", "example": "João" },
+          "email_message": { "type": "string", "example": "joao@example.com" },
+          "message_message": { "type": "string", "example": "Dúvida sobre o app." },
+          "date_message": { "type": "string", "format": "date-time", "example": "2026-05-19T10:00:00Z" }
+        }
+      },
+      "Sos": {
+        "type": "object",
+        "properties": {
+          "id_sos": { "type": "integer", "example": 1 },
+          "id_user": { "type": "integer", "example": 2 },
+          "date_sos": { "type": "string", "format": "date-time", "example": "2026-05-19T10:00:00Z" }
+        }
+      }
+    }
+  }
+}
